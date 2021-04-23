@@ -25,8 +25,12 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 @Component
 @EnableConfigurationProperties({SocketIoConfigProperties.class})
 public class SocketIoConfig   {
-    @Autowired
-    private SocketListener socketListener;
+
+    private final SocketListener socketListener;
+
+    public SocketIoConfig(SocketListener socketListener) {
+        this.socketListener = socketListener;
+    }
 
     @Bean
     public SocketIOServer initServer(SocketIoConfigProperties socketIoConfigProperties){
