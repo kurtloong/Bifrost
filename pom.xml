@@ -23,6 +23,7 @@
         <netty-socketio.version>1.7.18</netty-socketio.version>
         <guava.version>30.1.1-jre</guava.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
+        <socket.io-client.version>1.0.0</socket.io-client.version>
     </properties>
 
     <repositories>
@@ -89,6 +90,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.socket</groupId>
+            <artifactId>socket.io-client</artifactId>
+            <version>${socket.io-client.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>

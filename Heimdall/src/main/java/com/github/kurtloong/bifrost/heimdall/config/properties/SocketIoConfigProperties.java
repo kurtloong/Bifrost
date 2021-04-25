@@ -29,4 +29,9 @@ public class SocketIoConfigProperties {
 
     private String context;
 
+    private Integer reconnectionAttempts;
+
+    private Integer reconnectionDelay;
+
+    private Integer reconnectionTimeout;
 }

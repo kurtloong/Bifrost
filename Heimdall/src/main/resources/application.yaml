@@ -25,7 +25,9 @@ socket-io:
   # Ping消息间隔（毫秒），默认25秒。客户端向服务器发送一条心跳消息间隔
   pingInterval: 25000
   context: /heimdall/socket
-
+  reconnectionAttempts: 2
+  reconnectionDelay: 1000
+  reconnectionTimeout: 500
 heimdall:
   cluster: false
 
