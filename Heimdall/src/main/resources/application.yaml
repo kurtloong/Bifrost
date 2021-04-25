@@ -26,4 +26,8 @@ socket-io:
   pingInterval: 25000
   context: /heimdall/socket
 
+heimdall:
+  cluster: false
+
+
 

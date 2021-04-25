@@ -11,7 +11,8 @@ import java.util.List;
  * @date 2021-04-23 10:01
  */
 @Data
-@ConfigurationProperties(prefix = "name-server")
+@ConfigurationProperties(prefix = "heimdall")
 public class NameServerConfigProperties {
+    private Boolean cluster;
     private List<String> nameSeverAddress;
 }
