@@ -32,12 +32,14 @@ public class RouteMapping {
         String name = serverConfigEntity.getName();
 
 
-        if (routeMap.containsKey(name)) {
-            routeMap.get(name).add(serverConfigEntity);
-        } else {
-            List<ServerConfigEntity> serverConfigList = new ArrayList<>();
-            serverConfigList.add(serverConfigEntity);
-            routeMap.put(name, serverConfigList);
+        synchronized (this){
+            if (routeMap.containsKey(name)) {
+                routeMap.get(name).add(serverConfigEntity);
+            } else {
+                List<ServerConfigEntity> serverConfigList = new ArrayList<>();
+                serverConfigList.add(serverConfigEntity);
+                routeMap.put(name, serverConfigList);
+            }
         }
 
 
