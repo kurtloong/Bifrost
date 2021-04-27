@@ -3,7 +3,6 @@ package com.github.kurtloong.bifrost.heimdall.core.init;
 import com.github.kurtloong.bifrost.common.utils.JsonUtil;
 import com.github.kurtloong.bifrost.heimdall.domain.entity.SocketEntity;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

@@ -14,5 +14,4 @@ public class GatewayMapping {
     ConcurrentHashMap<String, GatewayEntity> gatewayMap = new ConcurrentHashMap<>();
 
 
-
 }
