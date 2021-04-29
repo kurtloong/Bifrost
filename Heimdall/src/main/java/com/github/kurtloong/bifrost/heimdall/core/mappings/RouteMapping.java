@@ -3,6 +3,7 @@ package com.github.kurtloong.bifrost.heimdall.core.mappings;
 
 import com.github.kurtloong.bifrost.heimdall.domain.entity.ServerConfigEntity;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import org.springframework.util.CollectionUtils;
@@ -23,6 +24,7 @@ import static com.github.kurtloong.bifrost.heimdall.constant.ErrorMessageConstan
 public class RouteMapping {
 
     /**
+     *
      * The Route map.
      */
     private final ConcurrentHashMap<String, Map<String,ServerConfigEntity>> routeMap = new ConcurrentHashMap<>();
@@ -123,5 +125,20 @@ public class RouteMapping {
 
     }
 
+    public List<ServerConfigEntity> getServerConfigList(){
+
+        List<ServerConfigEntity> result = Lists.newArrayList();
+
+        if (CollectionUtils.isEmpty(routeMap)){
+            return result;
+        }
+
+        routeMap.forEach((s, stringServerConfigEntityMap) -> {
+           result.addAll( stringServerConfigEntityMap.values());
+
+        });
+
+        return result;
+    }
 
 }

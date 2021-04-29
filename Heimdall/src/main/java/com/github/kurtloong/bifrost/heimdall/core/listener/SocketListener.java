@@ -4,9 +4,12 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.annotation.OnConnect;
 import com.corundumstudio.socketio.annotation.OnDisconnect;
 import com.github.kurtloong.bifrost.common.utils.WebSocketCacheUtil;
+import com.github.kurtloong.bifrost.heimdall.core.mappings.GatewayMapping;
+import com.github.kurtloong.bifrost.heimdall.core.mappings.RouteMapping;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static com.github.kurtloong.bifrost.heimdall.constant.ErrorMessageConstant.ON_CONNECT_PARAM_ERROR;
@@ -29,6 +32,15 @@ public class SocketListener {
 
     private static final String APPLICATION_CONNECT = "APPLICATION_CONNECT";
 
+    private static final String APPLICATION_LIST_SYNC = "APPLICATION_LIST_SYNC";
+
+    private final GatewayMapping gatewayMapping;
+    private final RouteMapping routeMapping;
+
+    public SocketListener(GatewayMapping gatewayMapping, RouteMapping routeMapping) {
+        this.gatewayMapping = gatewayMapping;
+        this.routeMapping = routeMapping;
+    }
 
     /**
      * On connect.
@@ -43,6 +55,8 @@ public class SocketListener {
             String host = client.getHandshakeData().getSingleUrlParam(HOST);
             Preconditions.checkArgument(StringUtils.isEmpty(host),ON_CONNECT_PARAM_ERROR);
             WebSocketCacheUtil.saveApplicationClient(host,client);
+            gatewayMapping.sendToGateway(routeMapping.getServerConfigList());
+
         }else {
             WebSocketCacheUtil.saveClient(event,client);
         }
@@ -63,6 +77,7 @@ public class SocketListener {
             String host = client.getHandshakeData().getSingleUrlParam(HOST);
             Preconditions.checkArgument(StringUtils.isEmpty(host),ON_CONNECT_PARAM_ERROR);
             WebSocketCacheUtil.deleteApplicationClient(client.getSessionId(),host);
+            gatewayMapping.sendToGateway(routeMapping.getServerConfigList());
         }else {
             WebSocketCacheUtil.deleteClient(event,client.getSessionId());
         }
