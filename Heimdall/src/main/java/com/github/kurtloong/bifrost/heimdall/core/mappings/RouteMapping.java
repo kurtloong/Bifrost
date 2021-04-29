@@ -6,6 +6,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
@@ -21,6 +22,7 @@ import static com.github.kurtloong.bifrost.heimdall.constant.ErrorMessageConstan
  * @date 2021-04-15 20:12
  */
 @Getter
+@Component
 public class RouteMapping {
 
     /**

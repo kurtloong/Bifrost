@@ -1,10 +1,8 @@
 package com.github.kurtloong.bifrost.heimdall.controller;
 
 import com.github.kurtloong.bifrost.heimdall.core.mappings.RouteMapping;
-import com.github.kurtloong.bifrost.heimdall.domain.entity.ServerConfigEntity;
 import com.github.kurtloong.bifrost.heimdall.domain.request.ApplicationSyncRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 

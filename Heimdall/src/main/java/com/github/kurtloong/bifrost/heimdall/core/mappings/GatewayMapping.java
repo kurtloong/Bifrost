@@ -5,6 +5,7 @@ import com.github.kurtloong.bifrost.heimdall.domain.entity.GatewayEntity;
 import lombok.Getter;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,9 +17,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 @Getter
+@Component
 public class GatewayMapping {
 
-    ConcurrentHashMap<String, GatewayEntity> gatewayMap = new ConcurrentHashMap<>();
+    private final  ConcurrentHashMap<String, GatewayEntity> gatewayMap = new ConcurrentHashMap<>();
 
 
 
