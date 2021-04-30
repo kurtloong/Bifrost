@@ -100,7 +100,15 @@ public void testUpdate() throws Exception {
 
 } 
 
-
+/**
+*
+* Method: getServerConfigList()
+*
+*/
+@Test
+public void testGetServerConfigList() throws Exception {
+//TODO: Test goes here...
+}
 
 /** 
 * 
@@ -109,7 +117,11 @@ public void testUpdate() throws Exception {
 */ 
 @Test
 public void testGetRouteMap() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    testPut();
+    Assert.assertTrue(routeMapping.getServerConfigList().size()>0);
+
+
 } 
 
 /** 
@@ -123,4 +135,24 @@ public void testGetVersion() throws Exception {
 } 
 
 
-} 
+/**
+*
+* Method: merge(Map<String , List<ServerConfigEntity>> serverMap)
+*
+*/
+@Test
+public void testMerge() throws Exception {
+//TODO: Test goes here...
+/*
+try {
+   Method method = RouteMapping.getClass().getMethod("merge", Map<String.class);
+   method.setAccessible(true);
+   method.invoke(<Object>, <Parameters>);
+} catch(NoSuchMethodException e) {
+} catch(IllegalAccessException e) {
+} catch(InvocationTargetException e) {
+}
+*/
+}
+
+}

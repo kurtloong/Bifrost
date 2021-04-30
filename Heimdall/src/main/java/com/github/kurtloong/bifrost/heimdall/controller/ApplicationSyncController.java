@@ -4,6 +4,7 @@ import com.github.kurtloong.bifrost.heimdall.core.mappings.RouteMapping;
 import com.github.kurtloong.bifrost.heimdall.domain.request.ApplicationSyncRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class ApplicationSyncController {
     }
 
     @PostMapping("/applicationSync")
-    public void applicationSync(ApplicationSyncRequest request) {
+    public void applicationSync(@RequestBody ApplicationSyncRequest request) {
         routeMapping.update(request.getServers(), request.getVersion());
     }
 }

@@ -6,6 +6,7 @@ import com.corundumstudio.socketio.annotation.OnDisconnect;
 import com.github.kurtloong.bifrost.common.utils.WebSocketCacheUtil;
 import com.github.kurtloong.bifrost.heimdall.core.mappings.GatewayMapping;
 import com.github.kurtloong.bifrost.heimdall.core.mappings.RouteMapping;
+import com.github.kurtloong.bifrost.heimdall.domain.request.ApplicationSyncRequest;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -55,7 +56,7 @@ public class SocketListener {
             String host = client.getHandshakeData().getSingleUrlParam(HOST);
             Preconditions.checkArgument(StringUtils.isEmpty(host),ON_CONNECT_PARAM_ERROR);
             WebSocketCacheUtil.saveApplicationClient(host,client);
-            gatewayMapping.sendToGateway(routeMapping.getServerConfigList());
+            gatewayMapping.sendToGateway(new ApplicationSyncRequest(routeMapping.getServerConfigList(), routeMapping.getVersion().get()));
 
         }else {
             WebSocketCacheUtil.saveClient(event,client);
@@ -77,7 +78,7 @@ public class SocketListener {
             String host = client.getHandshakeData().getSingleUrlParam(HOST);
             Preconditions.checkArgument(StringUtils.isEmpty(host),ON_CONNECT_PARAM_ERROR);
             WebSocketCacheUtil.deleteApplicationClient(client.getSessionId(),host);
-            gatewayMapping.sendToGateway(routeMapping.getServerConfigList());
+            gatewayMapping.sendToGateway(new ApplicationSyncRequest(routeMapping.getServerConfigList(), routeMapping.getVersion().get()));
         }else {
             WebSocketCacheUtil.deleteClient(event,client.getSessionId());
         }

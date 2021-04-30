@@ -14,4 +14,9 @@ import java.util.List;
 public class ApplicationSyncRequest {
     private List<ServerConfigEntity> servers;
     private Integer version;
+
+    public ApplicationSyncRequest(List<ServerConfigEntity> servers, Integer version) {
+        this.servers = servers;
+        this.version = version;
+    }
 }
