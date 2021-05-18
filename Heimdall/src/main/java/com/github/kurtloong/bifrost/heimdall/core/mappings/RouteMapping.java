@@ -26,7 +26,7 @@ import static com.github.kurtloong.bifrost.heimdall.constant.ErrorMessageConstan
 public class RouteMapping {
 
     /**
-     *
+     * TODO 是否会内存泄漏
      * The Route map.
      */
     private final ConcurrentHashMap<String, Map<String,ServerConfigEntity>> routeMap = new ConcurrentHashMap<>();

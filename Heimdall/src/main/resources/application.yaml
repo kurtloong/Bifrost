@@ -28,7 +28,7 @@ socket-io:
   reconnectionAttempts: 2
   reconnectionDelay: 1000
   reconnectionTimeout: 500
-heimdall:
+name-server:
   cluster: false
 
 
