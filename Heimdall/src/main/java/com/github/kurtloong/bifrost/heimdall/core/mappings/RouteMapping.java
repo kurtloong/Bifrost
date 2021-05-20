@@ -143,4 +143,7 @@ public class RouteMapping {
         return result;
     }
 
+    public Map<String,ServerConfigEntity> getRoutesMapByHost(String host){
+       return routeMap.get(host);
+    }
 }

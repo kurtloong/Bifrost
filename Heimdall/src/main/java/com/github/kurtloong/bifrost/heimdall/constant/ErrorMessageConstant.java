@@ -12,4 +12,5 @@ public class ErrorMessageConstant {
     public static final String NAME_SERVER_SOCKET_CREATE_ERROR = "create socket error !";
     public static final String ON_CONNECT_PARAM_ERROR = "connect param error!";
     public static final String PARAM_NULL_ERROR = "param %s not null !";
+    public static final String HOST_NOT_FOUND = "Can't find %s Host Server";
 }

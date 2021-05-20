@@ -1,0 +1,64 @@
+package com.github.kurtloong.bifrost.heimdall.domain.entity;
+
+import lombok.Data;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+
+import javax.servlet.http.HttpServletRequest;
+
+import static com.github.kurtloong.bifrost.common.utils.BodyConverterUtil.convertStringToBody;
+
+/**
+ * @author kurt.loong
+ * @version 1.0
+ * @date 2021/5/20 16:57
+ */
+
+public class RequestDataEntity extends UnmodifiableRequestDataEntity{
+    private boolean needRedirect;
+    private String redirectUrl;
+
+    public RequestDataEntity(HttpMethod method,
+                       String host,
+                       String uri,
+                       HttpHeaders headers,
+                       byte[] body,
+                       HttpServletRequest request) {
+        super(method, host, uri, headers, body, request);
+    }
+    public void setMethod(HttpMethod method) {
+        this.method = method;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public void setHeaders(HttpHeaders headers) {
+        this.headers = headers;
+    }
+
+    public void setBody(byte[] body) {
+        this.body = body;
+    }
+
+    public void setBody(String body) {
+        this.body = convertStringToBody(body);
+    }
+
+    public void setNeedRedirect(boolean needRedirect) {
+        this.needRedirect = needRedirect;
+    }
+
+    public boolean isNeedRedirect() {
+        return this.needRedirect;
+    }
+
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
+
+    public String getRedirectUrl() {
+        return this.redirectUrl;
+    }
+}
